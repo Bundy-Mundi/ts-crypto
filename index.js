@@ -1,21 +1,24 @@
 const express = require('express');
 const Blockchain = require('./blockchain');
 const bodyParser = require("body-parser");
+const PubSub = require("./pubsub");
 
 const PORT = 3000;
 const app = express();
-const blockchian = new Blockchain();
+const blockchain = new Blockchain();
+const pubsub = new PubSub({ blockchain });
+
+setTimeout(() => pubsub.broadcastChain(), 1000);
 
 app.use(bodyParser.json());
 
 app.get("/api/blocks", (req, res) => {
-    res.json(blockchian.chain);
+    res.json(blockchain.chain);
 });
 
 app.post("/api/mine", (req, res) => {
     const { data } = req.body;
-    blockchian.addBlock({ data });
-
+    blockchain.addBlock({ data });
     res.redirect("/api/blocks");
 });
 
