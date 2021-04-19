@@ -1,12 +1,12 @@
 import hexToBinary from "hex-to-binary";
 
 class Block {
-    timestamp: number;
-    lastHash: string;
-    hash: string;
-    nonce: number;
-    difficulty: number;
-    data: any;
+    timestamp:  BlockProp["timestamp"];
+    lastHash:   BlockProp["lastHash"];
+    hash:       BlockProp["hash"];
+    nonce:      BlockProp["nonce"];
+    difficulty: BlockProp["difficulty"];
+    data:       BlockProp["data"];
 
     constructor({ timestamp, lastHash, hash, nonce, difficulty, data }:BlockProp){
         this.timestamp = timestamp;
