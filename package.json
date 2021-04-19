@@ -7,7 +7,9 @@
     "test": "jest --watchAll",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js"
+    "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js",
+    "ts": "tsc index.ts",
+    "ts:dev": "nodemon --exec npx ts-node index.ts"
   },
   "keywords": [],
   "author": "",
