@@ -107,3 +107,5 @@ dist
 .node_modules/
 
 *.js
+old-src
+.vscode
