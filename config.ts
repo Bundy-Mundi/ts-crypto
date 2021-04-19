@@ -1,17 +1,8 @@
-type Block = {
-    timestamp: number,
-    lastHash: string,
-    hash: string,
-    nonce: number,
-    difficulty: number,
-    data: any
-}
-
 const MINE_RATE:number = 1000;
 const INITIAL_DIFFICULTY:number = 3;
 const INITIAL_NONCE:number = 0;
 
-const GENESIS_DATA:Block = {
+const GENESIS_DATA:BlockProp = {
     timestamp: 1,
     lastHash: '----',
     hash: 'hash-one',
@@ -20,4 +11,4 @@ const GENESIS_DATA:Block = {
     data: []
 };
 
-module.exports = { GENESIS_DATA, MINE_RATE };
+export { GENESIS_DATA, MINE_RATE };
