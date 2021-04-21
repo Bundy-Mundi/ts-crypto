@@ -1,6 +1,7 @@
-import hexToBinary from "hex-to-binary";
+import "../../global_types";
 
 class Block {
+    kind: 'Block';
     timestamp:  BlockProp["timestamp"];
     lastHash:   BlockProp["lastHash"];
     hash:       BlockProp["hash"];

@@ -1,5 +1,7 @@
 import Block from "./index";
 import { GENESIS_DATA, MINE_RATE } from "../../config";
+import hexToBinary from "hex-to-binary";
+import cryptoHash from "../utils/crypto-hash";
 
 type mineBlockProp = {
     lastBlock: Block;
@@ -17,6 +19,13 @@ const mineBlock = ({ lastBlock, data }: mineBlockProp): Block => {
     let { hash: lastHash } = lastBlock; // Grabbing previous block's hash
     let { difficulty } = lastBlock;// Grabbing previous block's difficulty
     let nonce = 0;
+
+    do {
+        nonce++;
+        timestamp = Date.now();
+        difficulty = adjustDifficulty({ originalBlock: lastBlock, timestamp });
+        hash = cryptoHash(timestamp, lastHash, nonce, difficulty, data);
+    } while(hexToBinary(hash).substring(0, difficulty) !== '0'.repeat(difficulty));
 
     return new Block({
         timestamp,
